@@ -7,18 +7,18 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './public/dist'),
   },
-//   resolve: {
-//     alias: {
-//       'vue': '@vue/runtime-dom',
-//     //   'vuex': 'vuex/dist/vuex.esm-bundler',
-//     //   '@': path.join(__dirname, 'src')
-//     }
-//   },
   module: {
       rules: [
           {
-              test: /\.vue$/,
-              loader: 'vue-loader'
+            test: /\.vue$/,
+            loader: 'vue-loader'
+          },
+          {
+            test: /\.css$/,
+            use: [
+              'vue-style-loader',
+              'css-loader'
+            ]
           }
       ]
   },
