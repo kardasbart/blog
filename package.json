@@ -15,6 +15,7 @@
   "author": "Bartosz Kardas",
   "private": false,
   "devDependencies": {
+    "ts-loader": "^9.2.6",
     "vue-loader": "^16.8.3",
     "vue-style-loader": "^4.1.3"
   }

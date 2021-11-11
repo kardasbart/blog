@@ -1,7 +1,7 @@
 <template>
     <h2>I am a {{ title }}</h2>
 </template>
-<script>
+<script lang="ts">
     export default {
         data() {
             return {
