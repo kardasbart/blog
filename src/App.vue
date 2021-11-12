@@ -1,12 +1,20 @@
 <template>
-  <h2>Hmm am not a {{ title }}</h2>
+  <p>
+    <router-link v-for="route in routes" :key="route.id" :to="route.path">
+      <div>{{ route.name }}</div>
+    </router-link>
+  </p>
+  <router-view></router-view>
 </template>
 
 <script lang="ts">
+import { useRouter } from "vue-router";
 export default {
   setup() {
-    const title = "Value";
-    return { title };
+    const router = useRouter();
+    const routes = router.getRoutes();
+
+    return { routes };
   },
 };
 </script>

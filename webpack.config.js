@@ -9,8 +9,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@src': path.resolve(__dirname, './src/'),
+      '@': path.resolve(__dirname, './src/'),
     },
+    extensions: ['.ts', '.js', '.json']
   },
   module: {
     rules: [
