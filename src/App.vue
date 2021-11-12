@@ -1,22 +1,23 @@
 <template>
-    <h2>I am a {{ title }}</h2>
+  <h2>Hmm am not a {{ title }}</h2>
 </template>
+
 <script lang="ts">
-    export default {
-        data() {
-            return {
-                title: "Vue Blog"
-            }
-        }
-    }
+export default {
+  setup() {
+    const title = "Value";
+    return { title };
+  },
+};
 </script>
+
 <style>
-    h2 {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 500px;
-        font-style: italic;
-        color: rgb(117, 22, 43);
-        text-align: center;
-        margin-top: 50px;
-    }
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 100px;
+  font-style: italic;
+  color: rgb(49, 184, 15);
+  text-align: center;
+  margin-top: 50px;
+}
 </style>

@@ -13,27 +13,35 @@ module.exports = {
     },
   },
   module: {
-      rules: [
-          {
-            test: /\.vue$/,
-            loader: 'vue-loader'
-          },
-          {
-            test: /\.ts$/,
-            loader: 'ts-loader',
-            options: {
-              appendTsSuffixTo: [/\.vue$/],
-            },
-            exclude: /node_modules/,
-          },
-          {
-            test: /\.css$/,
-            use: [
-              'vue-style-loader',
-              'css-loader'
-            ]
-          }
-      ]
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  devServer: {
+    hot: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9000,
   },
   plugins: [
     new VueLoaderPlugin()
