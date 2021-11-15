@@ -2,7 +2,7 @@
   <div>About View 33222</div>
   <div class="dropdown">
     <button
-      class="btn btn-secondary dropdown-toggle"
+      class="btn btn-favcolor dropdown-toggle"
       type="button"
       id="dropdownMenuButton1"
       data-bs-toggle="dropdown"
