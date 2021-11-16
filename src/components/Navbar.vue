@@ -1,7 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">
+        <img
+          src="/logo.svg"
+          alt=""
+          width="60"
+          height="60"
+          class="d-inline-block align-text-center"
+        />
+        Bartek Tech Blog
+      </a>
       <button
         class="navbar-toggler"
         type="button"

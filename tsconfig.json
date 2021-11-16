@@ -6,6 +6,7 @@
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
+    "noImplicitAny": false, // App.vue: Component issue: TS7031: Binding element 'Component' implicitly has an 'any' type.
     "baseUrl": ".",
     "paths": {
       "@/*": [
