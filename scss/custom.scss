@@ -1,12 +1,20 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-$custom-colors: ("favcolor": rgb(156, 16, 156));
+$custom-colors: (
+    "favcolor": rgb(156, 16, 156),
+);
 
-$theme-colors: ("primary":hsl(153, 47%, 49%),
+$theme-colors: (
+    "primary": hsl(153, 47%, 49%),
     //...other variables, you can find them in node_modules/bootstrap/scss/_variables.scss
 );
 
+$body-bg: #789;
+
 $theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
+$font-family-sans-serif: "Exo 2", sans-serif !important;
 
 // import to set changes
 @import "../node_modules/bootstrap/scss/bootstrap";

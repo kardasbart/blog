@@ -1,5 +1,5 @@
 <template>
-  <div>Home Vie3ee33w</div>
+  <h1 class="font-weight-bold">Start here!</h1>
 </template>
 
 <script lang="ts">
