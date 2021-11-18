@@ -1,20 +1,31 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-$custom-colors: (
-    "favcolor": rgb(156, 16, 156),
-);
-
-$theme-colors: (
-    "primary": hsl(153, 47%, 49%),
-    //...other variables, you can find them in node_modules/bootstrap/scss/_variables.scss
-);
-
-$body-bg: #789;
-
-$theme-colors: map-merge($theme-colors, $custom-colors);
-
+// Custom
 @import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
 $font-family-sans-serif: "Exo 2", sans-serif !important;
+
+// $foreground: #f3f4f7;
+// $background: #000;
+
+$foreground: #000;
+$background: #d4d5d9;
+
+$custom-colors: (
+    "backgr": $background,
+    "foregr": $foreground,
+);
+.navbar-style-color {
+    @extend .navbar-light;
+}
+
+// Override
+$body-bg: $background;
+// $theme-colors: (
+//     "primary": #2b4bff,
+//     "secondary": #a2a2a2
+//         //...other variables, you can find them in node_modules/bootstrap/scss/_variables.scss,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+// );
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 // import to set changes
 @import "../node_modules/bootstrap/scss/bootstrap";

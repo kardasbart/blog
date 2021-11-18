@@ -56,6 +56,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, '/public')
     },
+    historyApiFallback: true, //https://stackoverflow.com/questions/48123503/why-does-vue-router-webpack-dev-server-shows-cannot-get-path-on-page-refresh
     compress: true,
     port: 9000,
   },
