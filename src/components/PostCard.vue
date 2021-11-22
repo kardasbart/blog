@@ -1,39 +1,31 @@
 <template>
-  <div ref="root" class="container mb-5 mt-5">
-    <div class="row align-items-center bg-white">
-      <div class="col-sm-12 col-md-6" v-if="!(isImageFirst || flipped)">
-        <h3>{{ title }}</h3>
-        <p>{{ abstract }}</p>
-        <h6>{{ date }}</h6>
-      </div>
-      <div class="col-sm-12 col-md-6 bfvis">
-        <!-- TODO Component for handle many images -->
-        <div class="container">
-          <div class="row position-relative">
-            <div class="col">
-              <img
-                class="img-fluid thumbnail-box"
-                :src="thumbnail"
-                rel="preload"
-              />
-            </div>
-            <div class="col position-absolute">
-              <img
-                class="img-fluid thumbnail-box"
-                :src="thumbnailhover"
-                v-show="isSecond"
-                rel="preload"
-              />
-            </div>
-          </div>
+  <div ref="root" class="row align-items-center m-5 bg-white">
+    <div class="col-sm-12 col-md-6" v-if="!(isImageFirst || flipped)">
+      <h3>{{ title }}</h3>
+      <p>{{ abstract }}</p>
+      <h6>{{ date }}</h6>
+    </div>
+    <div class="col-sm-12 col-md-6 bfvis p-0">
+      <!-- TODO Component for handle many images -->
+      <div class="row position-relative no-gutters">
+        <div class="col d-flex" :class="imageAlignment">
+          <img class="thumbnail-box img-fluid" :src="thumbnail" rel="preload" />
+        </div>
+        <div class="col d-flex position-absolute" :class="imageAlignment">
+          <img
+            class="thumbnail-box img-fluid"
+            :src="thumbnailhover"
+            v-show="isSecond"
+            rel="preload"
+          />
         </div>
       </div>
-      <!-- TODO Dont Repeat Yourself: -->
-      <div class="col-sm-12 col-md-6" v-if="isImageFirst || flipped">
-        <h3>{{ title }}</h3>
-        <p>{{ abstract }}</p>
-        <h6>{{ date }}</h6>
-      </div>
+    </div>
+    <!-- TODO Dont Repeat Yourself: -->
+    <div class="col-sm-12 col-md-6" v-if="isImageFirst || flipped">
+      <h3>{{ title }}</h3>
+      <p>{{ abstract }}</p>
+      <h6>{{ date }}</h6>
     </div>
   </div>
 </template>
@@ -50,7 +42,7 @@ export default defineComponent({
     "thumbnailhover",
     "flipped",
   ],
-  setup() {
+  setup(props) {
     const root = ref<HTMLInputElement>();
     const isSecond = ref(false);
     const isImageFirst = ref(false);
@@ -66,7 +58,7 @@ export default defineComponent({
 
     const handleResize = () => {
       // TODO automatic bootstrap md value, or when the view breaks
-      isImageFirst.value = window.innerWidth < 600;
+      isImageFirst.value = window.innerWidth < 768;
     };
 
     onMounted(() => {
@@ -81,12 +73,18 @@ export default defineComponent({
       window.removeEventListener("resize", handleResize);
     });
 
-    return { root, isSecond, isImageFirst };
+    const imageAlignment = computed(() => {
+      if (isImageFirst.value) return "justify-content-center";
+      else if (props.flipped) return "justify-content-start";
+      else return "justify-content-end";
+    });
+
+    return { root, isSecond, isImageFirst, imageAlignment };
   },
 });
 </script>
 
-<style lang="css">
+<style lang="scss">
 .bfvis {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -96,6 +94,18 @@ export default defineComponent({
 }
 
 thumbnail-box {
-  max-height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 </style>
