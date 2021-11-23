@@ -1,28 +1,19 @@
 <template>
-  <div ref="root" class="row align-items-center m-5 bg-white">
-    <div class="col-sm-12 col-md-6" v-if="!(isImageFirst || flipped)">
-      <h3>{{ title }}</h3>
-      <p>{{ abstract }}</p>
-      <h6>{{ date }}</h6>
-    </div>
-    <div class="col-sm-12 col-md-6 bfvis p-0">
-      <!-- TODO Component for handle many images -->
-      <div class="row position-relative no-gutters">
-        <div class="col d-flex" :class="imageAlignment">
-          <img class="thumbnail-box img-fluid" :src="thumbnail" rel="preload" />
-        </div>
-        <div class="col d-flex position-absolute" :class="imageAlignment">
-          <img
-            class="thumbnail-box img-fluid"
-            :src="thumbnailhover"
-            v-show="isSecond"
-            rel="preload"
-          />
-        </div>
+  <div ref="root" class="d-flex no-gutters m-5 bg-white" :class="flexClass">
+    <div class="row m-0 p-0 position-relative" :style="halfPostCardStyle">
+      <div class="col m-0 p-0">
+        <img class="thumbnail-box" :src="thumbnail" rel="preload" />
+      </div>
+      <div class="col m-0 p-0 position-absolute">
+        <img
+          class="thumbnail-box"
+          :src="thumbnailhover"
+          v-show="isImageVisible"
+          rel="preload"
+        />
       </div>
     </div>
-    <!-- TODO Dont Repeat Yourself: -->
-    <div class="col-sm-12 col-md-6" v-if="isImageFirst || flipped">
+    <div class="p-4" :style="halfPostCardStyle">
       <h3>{{ title }}</h3>
       <p>{{ abstract }}</p>
       <h6>{{ date }}</h6>
@@ -44,7 +35,7 @@ export default defineComponent({
   ],
   setup(props) {
     const root = ref<HTMLInputElement>();
-    const isSecond = ref(false);
+    const isImageVisible = ref(false);
     const isImageFirst = ref(false);
 
     const handleScroll = () => {
@@ -52,8 +43,8 @@ export default defineComponent({
       const by = box?.y;
       const bh = box?.height;
       const val = by && bh ? by + bh / 2 : 0;
-      if (val && val < window.innerHeight / 2) isSecond.value = true;
-      else isSecond.value = false;
+      if (val && val < window.innerHeight / 2) isImageVisible.value = true;
+      else isImageVisible.value = false;
     };
 
     const handleResize = () => {
@@ -73,13 +64,28 @@ export default defineComponent({
       window.removeEventListener("resize", handleResize);
     });
 
-    const imageAlignment = computed(() => {
-      if (isImageFirst.value) return "justify-content-center";
-      else if (props.flipped) return "justify-content-start";
-      else return "justify-content-end";
+    const flexClass = computed(() => {
+      if (isImageFirst.value) return "flex-column";
+      else if (props.flipped) return "flex-row-reverse";
+      else return "flex-row";
     });
 
-    return { root, isSecond, isImageFirst, imageAlignment };
+    const halfPostCardStyle = computed(() => {
+      var result = { overflow: "hidden", "max-height": "30vh" };
+      if (!isImageFirst.value) {
+        result["max-width"] = "50%";
+        result["max-height"] = "80vh";
+      }
+      return result;
+    });
+
+    return {
+      root,
+      isImageVisible,
+      isImageFirst,
+      flexClass,
+      halfPostCardStyle,
+    };
   },
 });
 </script>
@@ -93,9 +99,8 @@ export default defineComponent({
   -o-backface-visibility: hidden;
 }
 
-thumbnail-box {
+.thumbnail-box {
   object-fit: cover;
-  overflow: hidden;
 }
 
 .no-gutters {
