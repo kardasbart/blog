@@ -1,5 +1,5 @@
 <template>
-  <div ref="root" class="d-flex no-gutters m-5 bg-white" :class="flexClass">
+  <div ref="root" class="d-flex no-gutters mt-5 bg-white" :class="flexClass">
     <div class="row m-0 p-0 position-relative" :style="halfPostCardStyle">
       <div class="col m-0 p-0">
         <img class="thumbnail-box" :src="thumbnail" rel="preload" />
@@ -49,7 +49,7 @@ export default defineComponent({
 
     const handleResize = () => {
       // TODO automatic bootstrap md value, or when the view breaks
-      isImageFirst.value = window.innerWidth < 768;
+      isImageFirst.value = window.innerWidth < 576;
     };
 
     onMounted(() => {
@@ -71,10 +71,13 @@ export default defineComponent({
     });
 
     const halfPostCardStyle = computed(() => {
-      var result = { overflow: "hidden", "max-height": "30vh" };
+      var result = {
+        overflow: "hidden",
+        "max-height": "30vh",
+        "min-height": "300px",
+      };
       if (!isImageFirst.value) {
         result["max-width"] = "50%";
-        result["max-height"] = "80vh";
       }
       return result;
     });

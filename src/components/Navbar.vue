@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md border-bottom border-primary">
+  <div class="container-fluid border-bottom border-primary">
     <nav class="navbar navbar-expand-sm navbar-style-color">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">

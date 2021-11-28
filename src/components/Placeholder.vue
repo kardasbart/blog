@@ -1,5 +1,5 @@
 <template>
-  <div class="container-lg container-center">
+  <div class="container-fluid container-center">
     <h1 class="font-weight-bold">{{ title }}</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti facere

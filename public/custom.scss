@@ -18,6 +18,31 @@ $custom-colors: (
     @extend .navbar-light;
 }
 
+// Source mixin
+@mixin make-container($padding-x: $container-padding-x) {
+    width: 100%;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.blogpage {
+    @include make-container();
+}
+
+@media (min-width: 576px) {
+    .blogpage {
+        @include make-container($padding-x: 10vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .blogpage {
+        @include make-container($padding-x: 20vw);
+    }
+}
+
 // Override
 $body-bg: $background;
 // $theme-colors: (
