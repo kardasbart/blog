@@ -13,9 +13,9 @@
         />
       </div>
     </div>
-    <div class="p-4" :style="halfPostCardStyle">
+    <div class="p-4 d-flex flex-column" :style="halfPostCardStyle">
       <h3>{{ title }}</h3>
-      <p>{{ abstract }}</p>
+      <p class="align-self-stretch" style="overflow: hidden">{{ abstract }}</p>
       <h6>{{ date }}</h6>
     </div>
   </div>
