@@ -4,12 +4,14 @@
       <img class="thumbnail-box" :src="mainImage" rel="preload" />
     </div>
     <div class="col m-0 p-0 position-absolute">
-      <img
-        class="thumbnail-box"
-        :src="hiddenImage"
-        v-show="isHiddenImageVisible"
-        rel="preload"
-      />
+      <transition name="fade">
+        <img
+          class="thumbnail-box"
+          :src="hiddenImage"
+          v-show="isHiddenImageVisible"
+          rel="preload"
+        />
+      </transition>
     </div>
   </div>
 </template>
@@ -47,9 +49,19 @@ export default defineComponent({
 
 <style lang="scss">
 .thumbnail-box {
-  // object-fit: cover;
-  height: 500px;
+  height: 400px;
   width: auto;
-  transform: translateX(-100px);
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.fade-leave-active {
+  transition: all 0.2s ease-in;
 }
 </style>

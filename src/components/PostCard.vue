@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex no-gutters mt-5 bg-white" :class="flexClass">
+  <div class="d-flex no-gutters mt-5 bg-white shadow" :class="flexClass">
     <ImagePostCard
       :style="halfPostCardStyle"
       :mainImage="thumbnail"
