@@ -1,5 +1,10 @@
 <template>
-  <div class="d-flex no-gutters mt-5 bg-white shadow" :class="flexClass">
+  <router-link
+    class="d-flex no-gutters mt-5 bg-white shadow"
+    :to="{ name: 'Post', params: { link: link } }"
+    style="text-decoration: none; color: inherit"
+    :class="flexClass"
+  >
     <ImagePostCard
       :style="halfPostCardStyle"
       :mainImage="thumbnail"
@@ -10,7 +15,7 @@
       <p class="align-self-stretch" style="overflow: hidden">{{ abstract }}</p>
       <h6>{{ date }}</h6>
     </div>
-  </div>
+  </router-link>
 </template>
 <script lang="ts">
 import { computed, defineComponent, ref, onUnmounted, onMounted } from "vue";
@@ -19,7 +24,7 @@ import ImagePostCard from "./ImagePostCard.vue";
 export default defineComponent({
   components: { ImagePostCard },
   props: [
-    "id",
+    "link",
     "title",
     "abstract",
     "date",
@@ -44,6 +49,10 @@ export default defineComponent({
       window.removeEventListener("resize", handleResize);
     });
 
+    const path = computed(() => {
+      return "/post/" + props.link;
+    });
+
     const flexClass = computed(() => {
       if (isImageFirst.value) return "flex-column";
       else if (props.flipped) return "flex-row-reverse";
@@ -66,6 +75,7 @@ export default defineComponent({
       isImageFirst,
       flexClass,
       halfPostCardStyle,
+      path,
     };
   },
 });

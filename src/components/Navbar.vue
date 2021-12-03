@@ -50,6 +50,9 @@ export default defineComponent({
     const router = useRouter();
     const routes = router.getRoutes();
 
+    var removeIndex = routes.map((item) => item.name).indexOf("Post");
+    ~removeIndex && routes.splice(removeIndex, 1);
+
     return { routes };
   },
 });

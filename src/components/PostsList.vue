@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <PostCard
       v-for="p in posts"
-      :key="p.id"
-      :pid="p.id"
+      :key="p.link"
+      :link="p.link"
       :title="p.title"
       :date="p.date"
       :abstract="p.abstract"
@@ -23,7 +23,7 @@ export default defineComponent({
   setup() {
     const posts = [
       {
-        id: 1,
+        link: "first-post",
         title: "First post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
@@ -32,7 +32,7 @@ export default defineComponent({
         thumbnailhover: "/static/post1/h.jpg",
       },
       {
-        id: 2,
+        link: "second-post",
         title: "Second post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
@@ -41,7 +41,7 @@ export default defineComponent({
         thumbnailhover: "/static/post2/h.jpg",
       },
       {
-        id: 3,
+        link: "third-post",
         title: "Third post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
@@ -50,8 +50,8 @@ export default defineComponent({
         thumbnailhover: "/static/post3/h.jpg",
       },
       {
-        id: 4,
-        title: "Second post",
+        link: "4th-post",
+        title: "4th post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
         date: "2021-10-10",
@@ -59,8 +59,8 @@ export default defineComponent({
         thumbnailhover: "/static/post2/h.jpg",
       },
       {
-        id: 5,
-        title: "Third post",
+        link: "last-post-but-not-least",
+        title: "Last post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
         date: "2021-09-01",
