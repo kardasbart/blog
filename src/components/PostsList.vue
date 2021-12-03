@@ -1,15 +1,10 @@
 <template>
   <div class="container-fluid">
     <PostCard
-      v-for="p in posts"
-      :key="p.link"
-      :link="p.link"
-      :title="p.title"
-      :date="p.date"
-      :abstract="p.abstract"
-      :thumbnail="p.thumbnail"
-      :thumbnailhover="p.thumbnailhover"
-      :flipped="p.id % 2 == 0"
+      v-for="(p, index) in posts"
+      :key="index"
+      :post="p"
+      :flipped="index % 2 == 0"
     />
   </div>
 </template>

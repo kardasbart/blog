@@ -1,19 +1,21 @@
 <template>
   <router-link
     class="d-flex no-gutters mt-5 bg-white shadow"
-    :to="{ name: 'Post', params: { link: link } }"
+    :to="{ name: 'Post', params: post }"
     style="text-decoration: none; color: inherit"
     :class="flexClass"
   >
     <ImagePostCard
       :style="halfPostCardStyle"
-      :mainImage="thumbnail"
-      :hiddenImage="thumbnailhover"
+      :mainImage="post.thumbnail"
+      :hiddenImage="post.thumbnailhover"
     />
     <div class="p-4 d-flex flex-column" :style="halfPostCardStyle">
-      <h3>{{ title }}</h3>
-      <p class="align-self-stretch" style="overflow: hidden">{{ abstract }}</p>
-      <h6>{{ date }}</h6>
+      <h3>{{ post.title }}</h3>
+      <p class="align-self-stretch" style="overflow: hidden">
+        {{ post.abstract }}
+      </p>
+      <h6>{{ post.date }}</h6>
     </div>
   </router-link>
 </template>
@@ -23,15 +25,7 @@ import ImagePostCard from "./ImagePostCard.vue";
 
 export default defineComponent({
   components: { ImagePostCard },
-  props: [
-    "link",
-    "title",
-    "abstract",
-    "date",
-    "thumbnail",
-    "thumbnailhover",
-    "flipped",
-  ],
+  props: ["post", "flipped"],
   setup(props) {
     const isImageFirst = ref(false);
 
@@ -47,10 +41,6 @@ export default defineComponent({
 
     onUnmounted(() => {
       window.removeEventListener("resize", handleResize);
-    });
-
-    const path = computed(() => {
-      return "/post/" + props.link;
     });
 
     const flexClass = computed(() => {
@@ -75,7 +65,6 @@ export default defineComponent({
       isImageFirst,
       flexClass,
       halfPostCardStyle,
-      path,
     };
   },
 });

@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
         component: About
     },
     {
-        path: '/post/:link',
+        path: '/post/:link/', // :field should be in route.params, ex. :date, :title etc.
         name: 'Post',
         component: Post
     }

@@ -1,5 +1,5 @@
 <template>
-  <Placeholder :title="title" content="This is post content" />
+  <Placeholder :title="post.title" :content="post.date" />
 </template>
 
 <script lang="ts">
@@ -11,9 +11,9 @@ export default defineComponent({
   components: { Placeholder },
   setup() {
     const route = useRoute();
-    const title = ref(route.params.link);
+    const post = ref(route.params);
 
-    return { title };
+    return { post };
   },
 });
 </script>
