@@ -1,5 +1,8 @@
 <template>
-  <Placeholder :title="post.title" :content="post.date" />
+  <div>
+    <Placeholder :title="post.title" :content="post.date" />
+    <h4>Link: {{ post.link }}</h4>
+  </div>
 </template>
 
 <script lang="ts">

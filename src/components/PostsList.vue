@@ -54,7 +54,7 @@ export default defineComponent({
         thumbnailhover: "/static/post2/h.jpg",
       },
       {
-        link: "last-post-but-not-least",
+        link: "last-but-not-least-post",
         title: "Last post",
         abstract:
           "Officia ex ad ea do Lorem nisi. Amet ipsum sint ullamco minim consequat ad ut consequat duis consectetur sit. Quis nulla aute mollit qui ea anim qui reprehenderit. Est magna cupidatat id sit eiusmod incididunt enim. Ex ut ullamco eu sit consectetur incididunt sit. Ea id est sit eiusmod eu aliqua irure pariatur deserunt esse magna cupidatat consectetur cupidatat.",
